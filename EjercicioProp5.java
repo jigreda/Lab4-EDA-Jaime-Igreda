@@ -79,6 +79,25 @@ public class ListaSimple {
     }
     return this;
   }
+  public ListaSimple removeLast() {
+        if(head==null || head.next==null) {
+            head=null;
+        } else {
+            Node curr=head;
+            while(curr.next.next!=null) curr=curr.next;
+            curr.next=null;
+        }
+        return this;
+    }
+    public ListaSimple addFirst(int data) {
+        Node new_node=new Node(data);
+        new_node.next=head;
+        head=new_node;
+        return this;
+    }
+    public ListaSimple addLast(int data) {
+        return insert(data);
+    }
 }
 class Node{
     int data;
