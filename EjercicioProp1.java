@@ -24,7 +24,18 @@ public class ListaDoble {
     }
     return head; //Retornar la cabeza de la lista
   }
+  //Metodo para imprimir la lista desde el inicio hacia el final
+  public static void imprimirAdelante(Node head) {
+    System.out.println("Lista hacia adelante:");
+    Node temp=head;
+    while(temp!=null) {
+      System.out.print(temp.data+" "); //Imprimir dato del nodo
+      temp=temp.next; //Avanzar al siguiente nodo
+    }
+    System.out.println();
+  }
   public static void main(String[] args) {
     Node head=crearLista(1,10);
+    imprimirAdelante(head);
   }
 }
