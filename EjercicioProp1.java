@@ -1,41 +1,42 @@
-public class ListaDoble {
-  static class Node {
-    int data;
-    Node next;
-    Node prev;
-    Node(int d) {
-      data=d;
-    	next=null;
-      prev=null;
+public class ListaDoble<T> {
+    //Clase interna Node genérica
+    static class Node<T> {
+        T data; //Dato de tipo genérico
+        Node<T> next; //Referencia al siguiente nodo
+        Node<T> prev; //Referencia al nodo anterior
+        Node(T d){
+            data=d;
+            next=null;
+            prev=null;
+        }
     }
-  }
-  //Metodo que crea una lista doblemente enlazada 
-  public static Node crearLista(int inicio,int fin) {
-    if(inicio>fin)
-      return null; // Caso inválido
-    Node head=new Node(inicio); // Primer nodo (cabeza)
-    Node actual=head;
-    //Crear los siguientes nodos y enlazarlos
-    for(int i=inicio+1;i<=fin;i++) {
-      Node nuevo=new Node(i); //Crear nuevo nodo
-      actual.next=nuevo; //Enlazar el actual con el nuevo hacia adelante
-      nuevo.prev=actual; //Enlazar el nuevo con el actual hacia atrás
-      actual=nuevo; //Avanzar al nuevo nodo
+    //Metodo que crea una lista doblemente enlazada con un arreglo de datos
+    public Node<T> crearLista(T[] datos) {
+        if(datos==null||datos.length==0)return null;
+        Node<T> cabeza=new Node<>(datos[0]);
+        Node<T> actual=cabeza;
+        for(int i=1;i<datos.length;i++) {
+            Node<T> nuevo=new Node<>(datos[i]);
+            actual.next=nuevo;
+            nuevo.prev=actual;
+            actual=nuevo;
+        }
+        return cabeza;
     }
-    return head; //Retornar la cabeza de la lista
-  }
-  //Metodo para imprimir la lista desde el inicio hacia el final
-  public static void imprimirAdelante(Node head) {
-    System.out.println("Lista hacia adelante:");
-    Node temp=head;
-    while(temp!=null) {
-      System.out.print(temp.data+" "); //Imprimir dato del nodo
-      temp=temp.next; //Avanzar al siguiente nodo
+    // Metodo para imprimir la lista desde el inicio hacia el final
+    public void imprimirAdelante(Node<T> cabeza) {
+        System.out.println("Lista hacia adelante:");
+        Node<T> temp=cabeza;
+        while(temp!=null) {
+            System.out.print(temp.data+" ");
+            temp=temp.next;
+        }
+        System.out.println();
     }
-    System.out.println();
-  }
   public static void main(String[] args) {
-    Node head=crearLista(1,10);
-    imprimirAdelante(head);
+    ListaDoble<Integer> lista=new ListaDoble<>();
+    Integer[] datos={1,2,3,4,5,6,7,8,9,10};
+    Node<Integer> cabeza=lista.crearLista(datos);
+    lista.imprimirAdelante(cabeza);
   }
 }
