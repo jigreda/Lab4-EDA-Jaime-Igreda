@@ -64,6 +64,21 @@ public class ListaSimple {
     System.out.println("Posicion "+index+" no encontrada");
     return this;
   }
+  public int size() {
+    int count=0;
+    Node curr=head;
+    while(curr!=null) {
+      count++;
+      curr=curr.next;
+    }
+    return count;
+  }
+  public ListaSimple removeFirst() {
+    if(head!=null) {
+      head=head.next;
+    }
+    return this;
+  }
 }
 class Node{
     int data;
