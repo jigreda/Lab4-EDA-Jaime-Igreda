@@ -107,3 +107,73 @@ class Node{
         next=null;
     }
 }
+class Principal {
+    public static void main(String[] args) {
+        ListaSimple lista=new ListaSimple(new int[]{1,2,3,4,5,6,7,8,9,10});
+        Scanner sc=new Scanner(System.in);
+        int opcion;
+        do {
+            System.out.println("\n--- Menu ---");
+            System.out.println("1. Insertar (al final)");
+            System.out.println("2. Imprimir lista");
+            System.out.println("3. Eliminar por clave");
+            System.out.println("4. Eliminar por posicion");
+            System.out.println("5. Tamanio de la lista");
+            System.out.println("6. Eliminar primero");
+            System.out.println("7. Eliminar ultimo");
+            System.out.println("8. Agregar al inicio");
+            System.out.println("9. Agregar al final");
+            System.out.println("0. Salir");
+            System.out.print("Opcion: ");
+            opcion=sc.nextInt();
+            int valor,pos;
+            switch(opcion) {
+                case 1:
+                    System.out.print("Valor: ");
+                    valor=sc.nextInt();
+                    lista.insert(valor);
+                    break;
+                case 2:
+                    lista.printList();
+                    break;
+                case 3:
+                    System.out.print("Valor a eliminar: ");
+                    valor=sc.nextInt();
+                    lista.deleteByKey(valor);
+                    break;
+                case 4:
+                    System.out.print("Posicion: ");
+                    pos=sc.nextInt();
+                    lista.deleteAtPosition(pos);
+                    break;
+                case 5:
+                    System.out.println("Tamanio: "+lista.size());
+                    break;
+                case 6:
+                    lista.removeFirst();
+                    System.out.println("Primer nodo eliminado");
+                    break;
+                case 7:
+                    lista.removeLast();
+                    System.out.println("Ultimo nodo eliminado");
+                    break;
+                case 8:
+                    System.out.print("Valor: ");
+                    valor=sc.nextInt();
+                    lista.addFirst(valor);
+                    break;
+                case 9:
+                    System.out.print("Valor: ");
+                    valor=sc.nextInt();
+                    lista.addLast(valor);
+                    break;
+                case 0:
+                    System.out.println("Adios!");
+                    break;
+                default:
+                    System.out.println("Opcion invalida");
+            }
+        } while(opcion!=0);
+        sc.close();
+    }
+}
