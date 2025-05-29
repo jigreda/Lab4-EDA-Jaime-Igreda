@@ -33,10 +33,25 @@ public class ListaDoble<T> {
         }
         System.out.println();
     }
-  public static void main(String[] args) {
-    ListaDoble<Integer> lista=new ListaDoble<>();
-    Integer[] datos={1,2,3,4,5,6,7,8,9,10};
-    Node<Integer> cabeza=lista.crearLista(datos);
-    lista.imprimirAdelante(cabeza);
-  }
+    // Metodo para imprimir la lista desde el final hacia el inicio
+    public void imprimirAtras(Node<T> cola) {
+        System.out.println("Lista hacia atras:");
+        Node<T> temp=cola;
+        while(temp!=null) {
+            System.out.print(temp.data+" ");
+            temp=temp.prev;
+        }
+        System.out.println();
+    }
+    public static void main(String[] args) {
+        ListaDoble<Integer> lista=new ListaDoble<>();
+        Integer[] datos={1,2,3,4,5,6,7,8,9,10};
+        Node<Integer> cabeza=lista.crearLista(datos);
+        lista.imprimirAdelante(cabeza);
+        // Encontrar la cola
+        Node<Integer> cola=cabeza;
+        while(cola.next!=null)
+            cola=cola.next;
+        lista.imprimirAtras(cola);
+    }
 }
