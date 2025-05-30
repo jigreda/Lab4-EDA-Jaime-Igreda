@@ -137,5 +137,64 @@ public class ListaDoble2{
 class Principal {
     public static void main(String[] args) {
         ListaDoble2 lista=new ListaDoble2(new int[]{1,2,3,4,5,6,7,8,9,10});
+        Scanner sc=new Scanner(System.in);
+        int opcion=0;
+        do {
+            System.out.println("\n--- MENU LISTA DOBLEMENTE ENLAZADA ---");
+            System.out.println("1. Insertar al final (addLast)");
+            System.out.println("2. Insertar al inicio (addFirst)");
+            System.out.println("3. Imprimir lista");
+            System.out.println("4. Eliminar por dato");
+            System.out.println("5. Eliminar por posicion");
+            System.out.println("6. Tamanio de la lista");
+            System.out.println("7. Eliminar primer nodo (removeFirst)");
+            System.out.println("8. Eliminar ultimo nodo (removeLast)");
+            System.out.println("9. Salir");
+            System.out.print("Elige una opcion: ");
+            opcion=sc.nextInt();
+            switch(opcion) {
+                case 1:
+                    System.out.print("Ingrese valor para insertar al final: ");
+                    int valFin=sc.nextInt();
+                    lista.addLast(valFin);
+                    System.out.println(valFin+" insertado al final");
+                    break;
+                case 2:
+                    System.out.print("Ingrese valor para insertar al inicio: ");
+                    int valIni=sc.nextInt();
+                    lista.addFirst(valIni);
+                    System.out.println(valIni+" insertado al inicio");
+                    break;
+                case 3:
+                    lista.printList();
+                    break;
+                case 4:
+                    System.out.print("Ingrese dato a eliminar: ");
+                    int dato=sc.nextInt();
+                    lista.deleteByKey(dato);
+                    break;
+                case 5:
+                    System.out.print("Ingrese posicion a eliminar: ");
+                    int pos=sc.nextInt();
+                    lista.deleteAtPosition(pos);
+                    break;
+                case 6:
+                    System.out.println("Tamanio de la lista: "+lista.size());
+                    break;
+                case 7:
+                    lista.removeFirst();
+                    System.out.println("Primer nodo eliminado");
+                    break;
+                case 8:
+                    lista.removeLast();
+                    System.out.println("Ultimo nodo eliminado");
+                    break;
+                case 9:
+                    System.out.println("Saliendo...");
+                    break;
+                default:
+                    System.out.println("Opcion no valida");
+            }
+        } while(opcion!=9);
     }
 }
