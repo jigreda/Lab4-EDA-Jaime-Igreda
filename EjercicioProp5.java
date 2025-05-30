@@ -1,6 +1,11 @@
 import java.util.Scanner;
 public class ListaSimple {
   Node head;
+  public ListaSimple(int[] elements){
+      for(int el:elements){
+          insert(el);
+      }
+  }
   public ListaSimple insert(int data) {
     Node new_node=new Node(data);
     if(head==null) {
