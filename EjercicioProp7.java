@@ -121,3 +121,70 @@ public class ListaCircular2 {
         insert(data);
     }
 }
+class Principal {
+    public static void main(String[] args){
+        ListaCircular2 lista=new ListaCircular2();
+        for(int i=1;i<=12;i++) lista.insert(i);
+        Scanner sc=new Scanner(System.in);
+        int opcion,valor,pos;
+        do{
+            System.out.println("-MENU LISTA CIRCULAR-");
+            System.out.println("\n1. Insertar");
+            System.out.println("2. Imprimir Lista");
+            System.out.println("3. Eliminar por valor");
+            System.out.println("4. Eliminar por posicion");
+            System.out.println("5. Tamano");
+            System.out.println("6. Eliminar primero");
+            System.out.println("7. Eliminar ultimo");
+            System.out.println("8. Agregar al inicio");
+            System.out.println("9. Agregar al final");
+            System.out.println("0. Salir");
+            System.out.print("Opcion: ");
+            opcion=sc.nextInt();
+            switch(opcion){
+                case 1:
+                    System.out.print("Valor: ");
+                    valor=sc.nextInt();
+                    lista.insert(valor);
+                    break;
+                case 2:
+                    lista.printList();
+                    break;
+                case 3:
+                    System.out.print("Valor: ");
+                    valor=sc.nextInt();
+                    lista.deleteByKey(valor);
+                    break;
+                case 4:
+                    System.out.print("Posicion: ");
+                    pos=sc.nextInt();
+                    lista.deleteAtPosition(pos);
+                    break;
+                case 5:
+                    System.out.println("Tamano: "+lista.size());
+                    break;
+                case 6:
+                    lista.removeFirst();
+                    break;
+                case 7:
+                    lista.removeLast();
+                    break;
+                case 8:
+                    System.out.print("Valor: ");
+                    valor=sc.nextInt();
+                    lista.addFirst(valor);
+                    break;
+                case 9:
+                    System.out.print("Valor: ");
+                    valor=sc.nextInt();
+                    lista.addLast(valor);
+                    break;
+                case 0:
+                    System.out.println("Fin del programa");
+                    break;
+                default:
+                    System.out.println("Opcion invalida");
+            }
+        }while(opcion!=0);
+    }
+}
