@@ -21,4 +21,23 @@ public class ListaCircular<T> {
     actual.next=cabeza; //Hacer la lista circular
       return cabeza;
   }
+  //Metodo para imprimir la lista circular una sola vez
+    public void imprimirLista(Node<T> cabeza) {
+        if(cabeza==null)return;
+        System.out.println("Lista circular:");
+        Node<T> actual=cabeza;
+        do {
+            System.out.print(actual.data+" ");
+            actual=actual.next;
+        } while(actual!=cabeza);
+
+        System.out.println();
+    }
+    //Metodo principal para probar con enteros
+    public static void main(String[] args) {
+        ListaCircular<Integer> lista=new ListaCircular<>();
+        Integer[] datos={1,2,3,4,5,6,7,8,9,10,11,12};
+        Node<Integer> cabeza=lista.crearListaCircular(datos);
+        lista.imprimirLista(cabeza);
+    }
 }
